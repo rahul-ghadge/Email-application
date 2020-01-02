@@ -1,0 +1,23 @@
+
+
+
+GET - http://localhost:8080/email?sender=me@sender.com
+
+
+
+
+POST - http://localhost:8080/email
+
+{
+	"receipt": [
+		"abc@test.com"
+		],
+		"ccReceipt" : [
+			"test@test.com"
+			],
+			"sender": "me@sender.com",
+			"subject": "Second Test mail subject",
+			"mailBody": "This is just test email for testing",
+			"folder": "SEND",
+			"isSpam": false
+}
