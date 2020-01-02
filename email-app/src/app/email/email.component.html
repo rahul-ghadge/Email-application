@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 cardcolor card-form ">
+      <li class="none">
+        <ul><button routerLink="/compose">Compose</button></ul>
+        <ul><a routerLink="" (click)="changeFolder('INBOX')">Inbox</a></ul>
+        <ul><a routerLink="" (click)="changeFolder('SEND')">Send</a></ul>
+        <ul><a routerLink="" (click)="changeFolder('ARCHIVE')">Archive</a></ul>
+        <ul><a routerLink="" (click)="changeFolder('DELETE')">Deleted</a></ul>
+      </li>
+    </div>
+    <div class="col-xs-6 cardcolor card-form">
+      <table class="table">
+        <thead>
+          <tr *ngFor="let email of emailData">
+            <th>{{email.sender}} - {{ email.subject }} &nbsp;&nbsp;&nbsp;
+              <span *ngIf="email.folder != 'SEND'">
+                <a routerLink="" *ngIf="email.folder != 'INBOX'"
+                  (click)="moveToFolder('INBOX', email._id)">INBOX</a>&nbsp;&nbsp;
+              </span>
+              <a routerLink="" *ngIf="email.folder != 'ARCHIVE'"
+                (click)="moveToFolder('ARCHIVE', email._id)">ARCHIVE</a>&nbsp;&nbsp;
+              <a routerLink="" *ngIf="email.folder != 'DELETE'"
+                (click)="moveToFolder('DELETE', email._id)">DELETE</a>&nbsp;&nbsp;
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
