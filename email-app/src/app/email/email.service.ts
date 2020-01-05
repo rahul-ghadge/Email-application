@@ -14,8 +14,8 @@ const httpOptions = {
 })
 export class EmailService {
 
-  //HOST = 'http://localhost:8080';
-  HOST = "http://192.168.0.104:8080"
+  HOST = 'http://localhost:8080';
+  //HOST = "http://192.168.0.104:8080"
   API_ENDPOINT = this.HOST + '/email';
 
   constructor(private http : HttpClient) { }
