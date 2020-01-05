@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Id;
 public class EmailModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String _id;
 
@@ -27,6 +27,14 @@ public class EmailModel implements Serializable {
 	private String folder;
 
 	private boolean isSpam;
+
+	public String get_id() {
+		return _id;
+	}
+
+	public void set_id(String _id) {
+		this._id = _id;
+	}
 
 	public String[] getReceipt() {
 		return receipt;
@@ -99,14 +107,4 @@ public class EmailModel implements Serializable {
 				+ subject + ", mailBody=" + mailBody + ", folder=" + folder + ", isSpam=" + isSpam + "]";
 	}
 
-	public String get_id() {
-		return _id;
-	}
-
-	public void set_id(String _id) {
-		this._id = _id;
-	}
-	
-	
-	
 }

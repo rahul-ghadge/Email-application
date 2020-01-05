@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,13 +16,14 @@ import com.email.demo.response.EmailResponse;
 import com.email.demo.service.EmailService;
 
 @RestController
+@RequestMapping("/email")
 public class EmailController {
 
 	@Autowired
 	private EmailService emailService;
 
 	
-	@GetMapping("/email")
+	@GetMapping("/get")
 	public ResponseEntity<EmailResponse> getEmails(@RequestParam(required=false) String sender,
 			@RequestParam String folder) {
 
@@ -32,16 +34,16 @@ public class EmailController {
 	}
 	
 	
-	@PostMapping("/email")
+	@PostMapping("/send-email")
 	public ResponseEntity<EmailResponse> getEmails(@RequestBody EmailModel emailModel) {
-
+		
 		EmailResponse emailResponse = emailService.sendEmails(emailModel);
 
 		return new ResponseEntity<>(emailResponse, HttpStatus.OK);
 
 	}
 	
-	@GetMapping("/email/move")
+	@GetMapping("/move")
 	public ResponseEntity<EmailResponse> moveToFolder(@RequestParam String id,
 			@RequestParam String folder) {
 
